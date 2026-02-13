@@ -67,15 +67,11 @@ const i18n = {
         behavioralTitle:'Behavioral Interview',
         behavioralDesc:'Prepare STAR answers for Operations-focused questions',
         technicalTitle:'Technical Q&A',
-        technicalDesc:'These may come up in final rounds. For new grads, being able to explain concepts in your own words matters more than textbook-perfect answers.',
+        technicalDesc:'About 20-30% of the interview may touch on these topics. You do not need textbook-perfect answers -- explain concepts in your own words and show you understand WHY they matter.',
         caseTitle:'Case Studies',
         caseDesc:'Practice real-world Operations problem-solving scenarios',
         glossaryTitle:'Glossary',
         glossaryDesc:'Key financial and Operations terms',
-        beginnerMode:'Beginner Mode',
-        beginnerOn:'Beginner ON',
-        beginnerOff:'Beginner OFF',
-        beginnerTip:'Beginner Tip',
         reverseQTitle:'Reverse Questions (Questions to Ask)',
         reverseQDesc:'Keep it simple and genuine. Avoid overly technical or show-off questions — interviewers see through that. Ask what you truly want to know.',
         recentTopicsTitle:'Recent Industry Topics',
@@ -140,15 +136,11 @@ const i18n = {
         behavioralTitle:'行動面接',
         behavioralDesc:'オペレーション向けのSTAR形式回答を準備',
         technicalTitle:'テクニカルQ&A',
-        technicalDesc:'最終面接で聞かれる可能性があります。新卒は教科書的な完璧な回答より、自分の言葉で概念を説明できることが大切です。',
+        technicalDesc:'面接の2-3割がこれらのトピックに触れる可能性があります。教科書的な完璧な回答は不要 -- 自分の言葉で概念を説明し、なぜ重要かを理解していることを示しましょう。',
         caseTitle:'ケーススタディ',
         caseDesc:'実際のオペレーション問題解決シナリオを練習',
         glossaryTitle:'用語集',
         glossaryDesc:'重要な金融・オペレーション用語',
-        beginnerMode:'初心者モード',
-        beginnerOn:'初心者モード ON',
-        beginnerOff:'初心者モード OFF',
-        beginnerTip:'初心者向けヒント',
         reverseQTitle:'逆質問（面接官への質問）',
         reverseQDesc:'シンプルで素直な質問が一番です。専門用語を使って知識をアピールしようとすると逆効果。本当に知りたいことを聞きましょう。',
         recentTopicsTitle:'最近の業界トピック',
@@ -177,18 +169,6 @@ function saveProgress(d){ localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); 
 function getStatus(id){ return loadProgress()[id] || 'not-started'; }
 function setStatus(id, s){ const d = loadProgress(); d[id] = s; saveProgress(d); }
 
-// --- Beginner mode ---
-let beginnerMode = localStorage.getItem('fin-ops-level') !== 'standard';
-function toggleBeginner(){
-    beginnerMode = !beginnerMode;
-    localStorage.setItem('fin-ops-level', beginnerMode ? 'beginner' : 'standard');
-    updateBeginnerBtn();
-    navigateTo(currentSection);
-}
-function updateBeginnerBtn(){
-    const btn = document.getElementById('beginner-btn');
-    if (btn) btn.textContent = beginnerMode ? t('beginnerOn') : t('beginnerOff');
-}
 
 // ============================================================
 // DATA
@@ -486,34 +466,160 @@ const caseStudies = [
 
 // --- Glossary ---
 const glossaryTerms = [
-    {term:'DvP', termJa:'DvP', def:'Delivery vs Payment - simultaneous exchange of securities and cash', defJa:'Delivery vs Payment - 証券と現金の同時交換', beginnerDef:'Like using an escrow service — both sides deliver at the same time so nobody gets cheated', beginnerDefJa:'エスクローサービスのようなもの — 両者が同時に引き渡すので誰も騙されない'},
-    {term:'CCP', termJa:'CCP', def:'Central Counterparty - intermediary between buyer and seller in cleared trades', defJa:'中央清算機関 - 清算された取引で買い手と売り手の間に入る仲介者', beginnerDef:'A trusted middleman who guarantees both sides will follow through on a deal', beginnerDefJa:'取引の両当事者が約束を果たすことを保証する信頼できる仲介者'},
-    {term:'CSD', termJa:'CSD', def:'Central Securities Depository - holds securities in dematerialized form', defJa:'中央証券保管振替機関 - 証券を電子化された形で保管', beginnerDef:'A digital vault that keeps track of who owns which securities', beginnerDefJa:'誰がどの証券を所有しているか記録するデジタル金庫'},
-    {term:'SSI', termJa:'SSI', def:'Standard Settlement Instructions - pre-agreed account details for settlement', defJa:'標準決済指示 - 決済のための事前合意された口座情報', beginnerDef:'Like saved delivery addresses — pre-set account details so payments go to the right place', beginnerDefJa:'保存された配送先住所のようなもの — 支払いが正しい場所に届くよう事前設定された口座情報'},
-    {term:'STP', termJa:'STP', def:'Straight-Through Processing - automated end-to-end trade processing', defJa:'ストレート・スルー・プロセッシング - 端から端までの自動取引処理', beginnerDef:'A fully automated assembly line where trades are processed without anyone having to step in', beginnerDefJa:'誰も介入することなく取引が処理される完全自動化された組立ライン'},
-    {term:'Break', termJa:'ブレーク', def:'Discrepancy between two records that should match', defJa:'一致すべき2つの記録間の不一致', beginnerDef:'When your notes say one thing but the other person\'s notes say something different', beginnerDefJa:'あなたのメモと相手のメモが違うことを言っている状態'},
-    {term:'Netting', termJa:'ネッティング', def:'Offsetting mutual obligations to reduce settlement amounts', defJa:'相互の債務を相殺し決済額を削減すること', beginnerDef:'If I owe you $100 and you owe me $80, we just settle the $20 difference', beginnerDefJa:'私があなたに100ドル、あなたが私に80ドル借りているなら、20ドルの差額だけ決済する'},
-    {term:'Margin Call', termJa:'マージンコール', def:'Demand for additional collateral when position moves against you', defJa:'ポジションが不利に動いた際の追加担保の要求', beginnerDef:'Like a landlord asking for more deposit because property values dropped', beginnerDefJa:'物件価値が下がったので大家さんが追加の保証金を求めるようなもの'},
-    {term:'SWIFT', termJa:'SWIFT', def:'Society for Worldwide Interbank Financial Telecommunication - messaging network', defJa:'国際銀行間通信協会 - 金融メッセージングネットワーク', beginnerDef:'The messaging app that banks use to talk to each other worldwide', beginnerDefJa:'世界中の銀行同士がやり取りするメッセージングアプリ'},
-    {term:'KYC/AML', termJa:'KYC/AML', def:'Know Your Customer / Anti-Money Laundering - client verification requirements', defJa:'顧客確認 / マネーロンダリング対策 - クライアント検証要件', beginnerDef:'ID check at the door — making sure customers are who they say they are and their money is legitimate', beginnerDefJa:'入口でのID確認 — 顧客が本人であり、お金が合法であることを確認'},
-    {term:'ISDA', termJa:'ISDA', def:'International Swaps and Derivatives Association - standard OTC contract framework', defJa:'国際スワップデリバティブ協会 - OTC契約の標準的枠組み'},
-    {term:'Custodian', termJa:'カストディアン', def:'Institution holding securities on behalf of clients (e.g., BNY Mellon, State Street)', defJa:'顧客に代わって証券を保管する機関（例：BNYメロン、ステートストリート）', beginnerDef:'Like a bank vault that holds your valuable items safely', beginnerDefJa:'大切な物を安全に保管する銀行の金庫のようなもの'},
-    {term:'Corporate Action', termJa:'コーポレートアクション', def:'Event by a company affecting its securities (dividends, splits, M&A)', defJa:'証券に影響する企業のイベント（配当、分割、M&A）', beginnerDef:'A company decision that changes something about its stock — like paying dividends or splitting shares', beginnerDefJa:'株式に関わる企業の決定 — 配当の支払いや株式分割など'},
-    {term:'FIX Protocol', termJa:'FIXプロトコル', def:'Financial Information eXchange - standard electronic trading messaging protocol', defJa:'Financial Information eXchange - 標準的な電子取引メッセージングプロトコル'},
-    {term:'T+1 / T+2', termJa:'T+1 / T+2', def:'Settlement date = Trade date + 1 or 2 business days', defJa:'決済日 = 取引日 + 1または2営業日', beginnerDef:'How many business days after buying before money and securities actually change hands', beginnerDefJa:'購入後、お金と証券が実際にやり取りされるまでの営業日数'},
-    {term:'Operational Risk', termJa:'オペレーショナルリスク', def:'Risk of loss from failed internal processes, people, systems, or external events', defJa:'内部プロセス、人、システム、外部事象の失敗による損失リスク', beginnerDef:'The risk that something goes wrong because of human error, computer failures, or broken processes', beginnerDefJa:'人的ミス、コンピュータ障害、壊れたプロセスが原因で何かがうまくいかないリスク'},
-    {term:'CSDR', termJa:'CSDR', def:'Central Securities Depositories Regulation - EU rules on settlement discipline', defJa:'中央証券保管振替機関規則 - 決済規律に関するEU規制'},
-    {term:'Herstatt Risk', termJa:'ヘルシュタットリスク', def:'FX settlement risk where one leg settles but the other doesn\'t due to time zone differences', defJa:'タイムゾーンの違いにより一方の通貨が決済されてもう一方が決済されないFX決済リスク'},
-    {term:'Affirmation / Confirmation', termJa:'アファメーション / コンファメーション', def:'Affirmation: institutional investor confirms trade details with broker. Confirmation: legal agreement of trade terms between counterparties (especially OTC).', defJa:'アファメーション：機関投資家がブローカーとの取引詳細を確認。コンファメーション：カウンターパーティ間の取引条件の法的合意（特にOTC）。'},
-    {term:'Allocation / Block Trade', termJa:'アロケーション / ブロックトレード', def:'Block trade: single large order executed as one. Allocation: splitting the block into sub-accounts (e.g., fund manager allocating across client funds).', defJa:'ブロックトレード：一括で執行される大口注文。アロケーション：ブロックをサブアカウントに分配（例：ファンドマネージャーが顧客ファンドに配分）。'},
-    {term:'Novation', termJa:'ノベーション', def:'Replacing an existing contract with a new one, substituting a new party. Common in CCP clearing (CCP novates between buyer and seller).', defJa:'既存の契約を新しい契約に置き換え、新しい当事者を代替する。CCP清算で一般的（CCPが買い手と売り手の間にノベーション）。'},
-    {term:'Buy-in', termJa:'バイイン', def:'When a buyer purchases securities in the open market because the seller failed to deliver. The original seller bears any price difference.', defJa:'売り手が引き渡しに失敗したため、買い手が公開市場で証券を購入すること。元の売り手が価格差を負担。'},
-    {term:'PvP / FOP', termJa:'PvP / FOP', def:'PvP (Payment vs Payment): simultaneous exchange of two currencies (CLS). FOP (Free of Payment): securities transfer without cash exchange (e.g., collateral movements).', defJa:'PvP（Payment vs Payment）：2通貨の同時交換（CLS）。FOP（Free of Payment）：現金交換なしの証券移転（例：担保移動）。'},
-    {term:'Nostro / Vostro', termJa:'ノストロ / ボストロ', def:'Nostro: "our" account held at another bank. Vostro: "your" account — another bank\'s account held at our bank. Used for cash reconciliation in settlement.', defJa:'ノストロ：他行に開設した「当方の」口座。ボストロ：当行に開設された「先方の」口座。決済時の現金照合に使用。'},
-    {term:'ISIN / CUSIP / LEI', termJa:'ISIN / CUSIP / LEI', def:'ISIN: International Securities Identification Number (global). CUSIP: US/Canada security identifier. LEI: Legal Entity Identifier (uniquely identifies counterparties).', defJa:'ISIN：国際証券識別番号（グローバル）。CUSIP：米国/カナダの証券識別子。LEI：取引主体識別子（カウンターパーティを一意に識別）。'},
-    {term:'UMR', termJa:'UMR', def:'Uncleared Margin Rules — global regulatory framework requiring bilateral OTC derivative counterparties to exchange initial and variation margin.', defJa:'非清算証拠金規則 — 二者間OTCデリバティブのカウンターパーティに当初証拠金と変動証拠金の交換を義務付けるグローバルな規制枠組み。'},
-    {term:'Settlement Agent / Paying Agent', termJa:'決済エージェント / 支払エージェント', def:'Settlement agent: intermediary that facilitates securities settlement. Paying agent: entity responsible for distributing coupon/dividend payments on behalf of the issuer.', defJa:'決済エージェント：証券決済を仲介する機関。支払エージェント：発行体に代わってクーポン/配当の支払いを行う機関。'},
-    {term:'Mark-to-Market (MTM)', termJa:'時価評価 (MTM)', def:'Revaluing a position based on current market prices. Used daily for margin calculations and P&L. Drives variation margin calls.', defJa:'現在の市場価格に基づきポジションを再評価すること。証拠金計算と損益に日次で使用。変動証拠金コールの根拠となる。'},
+    {term:'DvP', termJa:'DvP', fullName:'Delivery versus Payment',
+      def:'Simultaneous exchange of securities and cash, eliminating principal risk.',
+      defJa:'証券と現金の同時交換。元本リスクを排除する仕組み。',
+      usage:'Settlement instructions: "This trade settles DvP." Discussed when explaining why settlement is safe.',
+      usageJa:'決済指示：「この取引はDvPで決済」。決済の安全性を説明する場面で使用。',
+      beginnerDef:'Like using an escrow service — both sides deliver at the same time so nobody gets cheated.', beginnerDefJa:'エスクローサービスのようなもの — 両者が同時に引き渡すので誰も騙されない。'},
+    {term:'CCP', termJa:'CCP', fullName:'Central Counterparty',
+      def:'Intermediary between buyer and seller in cleared trades. Becomes the buyer to every seller and vice versa.',
+      defJa:'清算対象取引で買い手と売り手の間に入る仲介者。全売り手の買い手、全買い手の売り手になる。',
+      usage:'Clearing discussions: "This product is centrally cleared through LCH." Risk management conversations.',
+      usageJa:'清算の議論：「この商品はLCHで中央清算される」。リスク管理の会話で使用。',
+      beginnerDef:'A trusted middleman who guarantees both sides will follow through on a deal.', beginnerDefJa:'取引の両当事者が約束を果たすことを保証する信頼できる仲介者。'},
+    {term:'CSD', termJa:'CSD', fullName:'Central Securities Depository',
+      def:'Holds securities in dematerialized (electronic) form. Examples: DTCC, Euroclear, JASDEC.',
+      defJa:'証券を電子化された形で保管する機関。例：DTCC、Euroclear、JASDEC。',
+      usage:'Custody discussions: "Securities are held at the CSD." Settlement infrastructure conversations.',
+      usageJa:'カストディの議論：「証券はCSDに保管」。決済インフラの会話で使用。',
+      beginnerDef:'A digital vault that keeps track of who owns which securities.', beginnerDefJa:'誰がどの証券を所有しているか記録するデジタル金庫。'},
+    {term:'SSI', termJa:'SSI', fullName:'Standard Settlement Instructions',
+      def:'Pre-agreed account details for settlement. Incorrect SSIs are a common cause of settlement fails.',
+      defJa:'決済のための事前合意された口座情報。誤ったSSIは決済失敗の一般的な原因。',
+      usage:'Settlement ops: "Check the SSIs on file." Break investigation: "The SSI was outdated."',
+      usageJa:'決済業務：「ファイルのSSIを確認して」。ブレーク調査：「SSIが古かった」。',
+      beginnerDef:'Like saved delivery addresses — pre-set account details so payments go to the right place.', beginnerDefJa:'保存された配送先住所のようなもの — 支払いが正しい場所に届くよう事前設定された口座情報。'},
+    {term:'STP', termJa:'STP', fullName:'Straight-Through Processing',
+      def:'Automated end-to-end trade processing without manual intervention. Higher STP rate = fewer errors.',
+      defJa:'手作業なしの端から端までの自動取引処理。STP率が高い＝エラーが少ない。',
+      usage:'KPI discussions: "Our STP rate is 95%." Process improvement: "How can we increase STP?"',
+      usageJa:'KPIの議論：「STP率は95%」。プロセス改善：「STPをどう上げるか」。',
+      beginnerDef:'A fully automated assembly line where trades are processed without anyone having to step in.', beginnerDefJa:'誰も介入することなく取引が処理される完全自動化された組立ライン。'},
+    {term:'Break', termJa:'ブレーク',
+      def:'Discrepancy between two records that should match. Types: trade breaks, position breaks, cash breaks.',
+      defJa:'一致すべき2つの記録間の不一致。種類：取引ブレーク、ポジションブレーク、現金ブレーク。',
+      usage:'Daily ops: "We have 15 breaks to resolve today." Reconciliation reports.',
+      usageJa:'日次業務：「今日解決すべきブレークが15件」。照合レポートで使用。',
+      beginnerDef:'When your notes say one thing but the other person\'s notes say something different.', beginnerDefJa:'あなたのメモと相手のメモが違うことを言っている状態。'},
+    {term:'Netting', termJa:'ネッティング',
+      def:'Offsetting mutual obligations to reduce settlement amounts and volumes.',
+      defJa:'相互の債務を相殺し決済額と件数を削減すること。',
+      usage:'CCP clearing: "Netting reduced our settlement obligations by 80%." Efficiency discussions.',
+      usageJa:'CCP清算：「ネッティングで決済義務が80%減少」。効率化の議論で使用。',
+      beginnerDef:'If I owe you $100 and you owe me $80, we just settle the $20 difference.', beginnerDefJa:'私があなたに100ドル、あなたが私に80ドル借りているなら、20ドルの差額だけ決済する。'},
+    {term:'Margin Call', termJa:'マージンコール',
+      def:'Demand for additional collateral when a position moves against you.',
+      defJa:'ポジションが不利に動いた際の追加担保の要求。',
+      usage:'Risk management: "We received a margin call from the CCP." Daily collateral operations.',
+      usageJa:'リスク管理：「CCPからマージンコールを受けた」。日次の担保管理業務で使用。',
+      beginnerDef:'Like a landlord asking for more deposit because property values dropped.', beginnerDefJa:'物件価値が下がったので大家さんが追加の保証金を求めるようなもの。'},
+    {term:'SWIFT', termJa:'SWIFT', fullName:'Society for Worldwide Interbank Financial Telecommunication',
+      def:'Global messaging network for financial institutions. Message types: MT103 (payment), MT540/541 (settlement).',
+      defJa:'金融機関のグローバルメッセージングネットワーク。メッセージ種別：MT103（送金）、MT540/541（決済）。',
+      usage:'Settlement ops: "Send the MT541 via SWIFT." Investigation: "Check the SWIFT message log."',
+      usageJa:'決済業務：「SWIFTでMT541を送信して」。調査：「SWIFTメッセージログを確認して」。',
+      beginnerDef:'The messaging app that banks use to talk to each other worldwide.', beginnerDefJa:'世界中の銀行同士がやり取りするメッセージングアプリ。'},
+    {term:'KYC/AML', termJa:'KYC/AML', fullName:'Know Your Customer / Anti-Money Laundering',
+      def:'Client verification and transaction monitoring requirements to prevent financial crime.',
+      defJa:'金融犯罪防止のためのクライアント検証と取引監視の要件。',
+      usage:'Client onboarding: "KYC checks must be completed before trading." Compliance reviews.',
+      usageJa:'クライアントオンボーディング：「取引前にKYCチェックを完了する必要がある」。コンプライアンスレビューで使用。',
+      beginnerDef:'ID check at the door — making sure customers are who they say they are and their money is legitimate.', beginnerDefJa:'入口でのID確認 — 顧客が本人であり、お金が合法であることを確認。'},
+    {term:'ISDA', termJa:'ISDA', fullName:'International Swaps and Derivatives Association',
+      def:'Standard legal framework for OTC derivatives trading. The ISDA Master Agreement governs most OTC trades.',
+      defJa:'OTCデリバティブ取引の標準的な法的枠組み。ISDAマスター契約がほとんどのOTC取引を規定。',
+      usage:'OTC trading: "Do we have an ISDA in place with this counterparty?" Legal/documentation teams.',
+      usageJa:'OTC取引：「このカウンターパーティとのISDAはあるか？」法務・ドキュメンテーションチームで使用。'},
+    {term:'Custodian', termJa:'カストディアン',
+      def:'Institution holding securities on behalf of clients. Examples: BNY Mellon, State Street, MUFG.',
+      defJa:'顧客に代わって証券を保管する機関。例：BNYメロン、ステートストリート、MUFG。',
+      usage:'Settlement: "Instruct the custodian to release the securities." Asset servicing discussions.',
+      usageJa:'決済：「カストディアンに証券のリリースを指示して」。アセットサービシングの議論で使用。',
+      beginnerDef:'Like a bank vault that holds your valuable items safely.', beginnerDefJa:'大切な物を安全に保管する銀行の金庫のようなもの。'},
+    {term:'Corporate Action', termJa:'コーポレートアクション',
+      def:'Event by a company affecting its securities: dividends, stock splits, mergers, rights issues.',
+      defJa:'証券に影響する企業のイベント：配当、株式分割、合併、新株予約権。',
+      usage:'Ops processing: "We need to process the dividend corporate action by record date." Announcement monitoring.',
+      usageJa:'業務処理：「基準日までに配当コーポレートアクションを処理する必要がある」。アナウンスメントの監視で使用。',
+      beginnerDef:'A company decision that changes something about its stock — like paying dividends or splitting shares.', beginnerDefJa:'株式に関わる企業の決定 — 配当の支払いや株式分割など。'},
+    {term:'FIX Protocol', termJa:'FIXプロトコル', fullName:'Financial Information eXchange',
+      def:'Industry standard electronic trading messaging protocol. Uses tag=value pairs (e.g., Tag 35=D for New Order).',
+      defJa:'業界標準の電子取引メッセージングプロトコル。タグ=値のペアを使用（例：Tag 35=D は新規注文）。',
+      usage:'Trading systems: "Orders are sent via FIX." Integration: "Parse the FIX execution report."',
+      usageJa:'取引システム：「注文はFIXで送信」。システム連携：「FIXの約定レポートを解析して」。'},
+    {term:'T+1 / T+2', termJa:'T+1 / T+2',
+      def:'Settlement cycle. T = Trade date. US equities moved to T+1 in May 2024.',
+      defJa:'決済サイクル。T=取引日。米国株式は2024年5月にT+1に移行。',
+      usage:'Settlement planning: "This settles T+1." Cross-border: "Japan equities settle T+2."',
+      usageJa:'決済計画：「これはT+1で決済」。クロスボーダー：「日本株はT+2で決済」。',
+      beginnerDef:'How many business days after buying before money and securities actually change hands.', beginnerDefJa:'購入後、お金と証券が実際にやり取りされるまでの営業日数。'},
+    {term:'Operational Risk', termJa:'オペレーショナルリスク',
+      def:'Risk of loss from failed internal processes, people, systems, or external events.',
+      defJa:'内部プロセス、人、システム、外部事象の失敗による損失リスク。',
+      usage:'Incident reports: "This is an operational risk event." Risk frameworks: RCSA, KRI tracking.',
+      usageJa:'インシデント報告：「これはオペレーショナルリスクイベント」。リスクフレームワーク：RCSA、KRI管理で使用。',
+      beginnerDef:'The risk that something goes wrong because of human error, computer failures, or broken processes.', beginnerDefJa:'人的ミス、コンピュータ障害、壊れたプロセスが原因で何かがうまくいかないリスク。'},
+    {term:'CSDR', termJa:'CSDR', fullName:'Central Securities Depositories Regulation',
+      def:'EU regulation on settlement discipline. Imposes penalties for settlement fails and mandatory buy-ins.',
+      defJa:'決済規律に関するEU規制。決済失敗に対するペナルティと強制バイインを課す。',
+      usage:'EU settlement: "CSDR penalties apply to this fail." Regulatory compliance discussions.',
+      usageJa:'EU決済：「この失敗にはCSDRペナルティが適用される」。規制コンプライアンスの議論で使用。'},
+    {term:'Herstatt Risk', termJa:'ヘルシュタットリスク',
+      def:'FX settlement risk where one currency leg settles but the other does not due to time zone differences.',
+      defJa:'タイムゾーンの違いにより一方の通貨が決済されてもう一方が決済されないFX決済リスク。',
+      usage:'FX settlement: "CLS was created to eliminate Herstatt risk." Cross-border risk discussions.',
+      usageJa:'FX決済：「CLSはヘルシュタットリスクを排除するために作られた」。クロスボーダーリスクの議論で使用。'},
+    {term:'Affirmation / Confirmation', termJa:'アファメーション / コンファメーション',
+      def:'Affirmation: investor confirms trade details with broker. Confirmation: legal agreement of trade terms between counterparties.',
+      defJa:'アファメーション：投資家がブローカーとの取引詳細を確認。コンファメーション：カウンターパーティ間の取引条件の法的合意。',
+      usage:'Post-trade: "The trade is affirmed, waiting for confirmation." OTC derivatives documentation.',
+      usageJa:'ポストトレード：「取引はアファーム済み、コンファメーション待ち」。OTCデリバティブのドキュメンテーションで使用。'},
+    {term:'Allocation / Block Trade', termJa:'アロケーション / ブロックトレード',
+      def:'Block trade: single large order executed as one. Allocation: splitting it into sub-accounts for different funds.',
+      defJa:'ブロックトレード：一括で執行される大口注文。アロケーション：異なるファンドのサブアカウントに分配。',
+      usage:'Asset management ops: "The block trade needs to be allocated across 5 client funds by EOD."',
+      usageJa:'アセットマネジメント業務：「ブロックトレードを営業日終了までに5つのクライアントファンドにアロケーションする必要がある」。'},
+    {term:'Novation', termJa:'ノベーション',
+      def:'Replacing an existing contract with a new one, substituting a new party. Core mechanism of CCP clearing.',
+      defJa:'既存の契約を新しい契約に置き換え、新しい当事者を代替する。CCP清算の核となる仕組み。',
+      usage:'CCP clearing: "The CCP novates between buyer and seller." Contract restructuring.',
+      usageJa:'CCP清算：「CCPが買い手と売り手の間にノベーション」。契約再構築で使用。'},
+    {term:'Buy-in', termJa:'バイイン',
+      def:'Buyer purchases securities in the open market because the seller failed to deliver. Seller bears the price difference.',
+      defJa:'売り手が引き渡しに失敗したため、買い手が公開市場で証券を購入。売り手が価格差を負担。',
+      usage:'Settlement fails: "If not resolved by day 4, we initiate a buy-in." CSDR mandatory buy-in rules.',
+      usageJa:'決済失敗：「4日目までに解決しなければバイインを開始」。CSDRの強制バイインルールで使用。'},
+    {term:'PvP / FOP', termJa:'PvP / FOP', fullName:'Payment vs Payment / Free of Payment',
+      def:'PvP: simultaneous exchange of two currencies (via CLS). FOP: securities transfer without cash (e.g., collateral movements).',
+      defJa:'PvP：2通貨の同時交換（CLS経由）。FOP：現金交換なしの証券移転（例：担保移動）。',
+      usage:'FX settlement: "Settle via CLS on a PvP basis." Collateral: "Move bonds FOP for margin."',
+      usageJa:'FX決済：「CLSでPvPベースで決済」。担保：「証拠金としてFOPで債券を移動」。'},
+    {term:'Nostro / Vostro', termJa:'ノストロ / ボストロ',
+      def:'Nostro: "our" account at another bank. Vostro: "their" account at our bank. Key for cash reconciliation.',
+      defJa:'ノストロ：他行に開設した「当方の」口座。ボストロ：当行に開設された「先方の」口座。現金照合の要。',
+      usage:'Cash reconciliation: "Check the nostro balance." Correspondent banking discussions.',
+      usageJa:'現金照合：「ノストロ残高を確認して」。コルレス銀行の議論で使用。'},
+    {term:'ISIN / CUSIP / LEI', termJa:'ISIN / CUSIP / LEI', fullName:'International Securities Identification Number / Committee on Uniform Securities Identification Procedures / Legal Entity Identifier',
+      def:'ISIN: global securities ID. CUSIP: US/Canada ID. LEI: unique counterparty identifier.',
+      defJa:'ISIN：グローバル証券識別番号。CUSIP：米国/カナダの識別子。LEI：取引主体を一意に識別。',
+      usage:'Trade booking: "Enter the ISIN for this bond." Regulatory reporting: "LEI is required for all reports."',
+      usageJa:'取引記帳：「この債券のISINを入力して」。規制報告：「全レポートにLEIが必要」。'},
+    {term:'UMR', termJa:'UMR', fullName:'Uncleared Margin Rules',
+      def:'Global rules requiring bilateral OTC derivative counterparties to exchange initial and variation margin.',
+      defJa:'二者間OTCデリバティブのカウンターパーティに当初証拠金と変動証拠金の交換を義務付けるグローバルな規則。',
+      usage:'Collateral management: "UMR Phase 6 brought smaller firms into scope." Margin operations.',
+      usageJa:'担保管理：「UMR Phase 6で小規模企業も対象に」。マージン業務で使用。'},
+    {term:'Settlement Agent / Paying Agent', termJa:'決済エージェント / 支払エージェント',
+      def:'Settlement agent: facilitates securities settlement. Paying agent: distributes coupon/dividend payments for the issuer.',
+      defJa:'決済エージェント：証券決済を仲介。支払エージェント：発行体に代わりクーポン/配当を支払い。',
+      usage:'Bond operations: "Who is the paying agent for this bond issue?" Settlement coordination.',
+      usageJa:'債券業務：「この債券発行の支払エージェントは誰か？」決済の調整で使用。'},
+    {term:'MTM', termJa:'MTM', fullName:'Mark-to-Market',
+      def:'Revaluing a position based on current market prices. Used daily for margin calculations and P&L.',
+      defJa:'現在の市場価格に基づきポジションを再評価すること。証拠金計算と損益に日次で使用。',
+      usage:'Daily ops: "Run the MTM for all derivatives positions." Margin calls are based on MTM changes.',
+      usageJa:'日次業務：「全デリバティブポジションのMTMを実行」。マージンコールはMTMの変動に基づく。'},
 ];
 
 // ============================================================
@@ -526,7 +632,6 @@ const sidebar = document.getElementById('sidebar');
 const sidebarOverlay = document.getElementById('sidebar-overlay');
 const resetBtn = document.getElementById('reset-btn');
 const langBtn = document.getElementById('lang-btn');
-const beginnerBtn = document.getElementById('beginner-btn');
 let currentSection = 'dashboard';
 
 function h(tag, attrs, ...children){
@@ -542,14 +647,12 @@ function h(tag, attrs, ...children){
 }
 
 function beginnerNoteEl(obj) {
-    if (!beginnerMode) return null;
     const note = L(obj, 'beginnerNote');
     if (!note) return null;
     return h('div', { className: 'beginner-note' }, note);
 }
 
 function beginnerDefEl(obj) {
-    if (!beginnerMode) return null;
     const def = L(obj, 'beginnerDef');
     if (!def) return null;
     return h('div', { className: 'beginner-note', style: 'margin-top:8px' }, def);
@@ -560,7 +663,6 @@ function updateNavLabels(){
     navLinks.forEach(l => { const icon = l.querySelector('.nav-icon'); l.innerHTML = (icon ? icon.outerHTML : '') + ' ' + (labels[l.dataset.section] || ''); });
     resetBtn.textContent = t('resetBtn');
     langBtn.textContent = currentLang === 'ja' ? 'EN / JA  (JA)' : 'EN / JA  (EN)';
-    updateBeginnerBtn();
 }
 
 // --- Sidebar ---
@@ -570,7 +672,6 @@ navLinks.forEach(link => link.addEventListener('click', e => { e.preventDefault(
 menuToggle.addEventListener('click', () => { sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
 sidebarOverlay.addEventListener('click', closeSidebar);
 langBtn.addEventListener('click', () => { currentLang = currentLang === 'en' ? 'ja' : 'en'; localStorage.setItem('fin-ops-lang', currentLang); document.documentElement.lang = currentLang === 'ja' ? 'ja' : 'en'; updateNavLabels(); navigateTo(currentSection); });
-beginnerBtn.addEventListener('click', toggleBeginner);
 resetBtn.addEventListener('click', () => { if (confirm(t('resetConfirm'))){ localStorage.removeItem(STORAGE_KEY); navigateTo(currentSection); } });
 
 function navigateTo(section, params){
@@ -681,6 +782,16 @@ function renderFinanceBasics(){
 function renderTradeLifecycle(){
     content.innerHTML = '';
     content.appendChild(h('div', {className:'page-header'}, h('h2', null, t('tradeLifecycleTitle')), h('p', null, t('tradeLifecycleDesc'))));
+    // Flow diagram
+    const flowSteps = currentLang === 'ja'
+        ? ['KYC/開設','約定','清算','決済','事後処理','リスク管理']
+        : ['Onboarding','Execution','Clearing','Settlement','Post-Trade','Risk & Control'];
+    const flowDiagram = h('div', {className:'flow-diagram'});
+    flowSteps.forEach((s, i) => {
+        flowDiagram.appendChild(h('div', {className:'flow-step'}, s));
+        if (i < flowSteps.length - 1) flowDiagram.appendChild(h('div', {className:'flow-arrow'}, '\u2192'));
+    });
+    content.appendChild(flowDiagram);
     tradeLifecycleSteps.forEach(step => {
         const status = getStatus(step.id);
         const card = h('div', {className:'card'});
@@ -820,12 +931,17 @@ function renderGlossary(){
     content.innerHTML = '';
     content.appendChild(h('div', {className:'page-header'}, h('h2', null, t('glossaryTitle')), h('p', null, t('glossaryDesc'))));
     glossaryTerms.forEach(g => {
-        const card = h('div', {className:'card', style:'padding:14px 20px'},
-            h('div', {style:'display:flex;gap:16px;align-items:baseline;flex-wrap:wrap'},
-                h('span', {style:'font-weight:700;color:var(--accent);min-width:120px'}, L(g, 'term')),
-                h('span', {style:'color:var(--text-muted);font-size:.9rem'}, L(g, 'def'))));
+        const card = h('div', {className:'card', style:'padding:14px 20px'});
+        const termLine = h('div', {style:'display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;margin-bottom:6px'});
+        termLine.appendChild(h('span', {style:'font-weight:700;color:var(--accent);font-size:1rem'}, L(g, 'term')));
+        if (g.fullName) termLine.appendChild(h('span', {style:'color:var(--text-muted);font-size:.8rem'}, '= ' + g.fullName));
+        card.appendChild(termLine);
+        card.appendChild(h('p', {style:'color:var(--text);font-size:.9rem;line-height:1.6;margin-bottom:6px'}, L(g, 'def')));
         const bd = beginnerDefEl(g);
         if (bd) card.appendChild(bd);
+        const usageText = L(g, 'usage');
+        if (usageText) card.appendChild(h('div', {style:'margin-top:8px;padding:8px 12px;background:var(--bg-main);border-radius:6px;font-size:.8rem;color:var(--text-muted);line-height:1.5'},
+            h('span', {style:'font-weight:600;color:var(--accent)'}, currentLang === 'ja' ? 'Usage: ' : 'Usage: '), usageText));
         content.appendChild(card);
     });
 }

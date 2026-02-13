@@ -712,3 +712,13 @@ body {
     .category-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
     .stats-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 }
+
+/* Flow Diagram */
+.flow-diagram { display:flex; align-items:center; gap:6px; overflow-x:auto; padding:16px 0; flex-wrap:nowrap; }
+.flow-step { background:var(--bg-card); border:2px solid var(--accent); border-radius:8px; padding:8px 14px; text-align:center; font-size:.8rem; font-weight:600; white-space:nowrap; color:var(--text); flex-shrink:0; }
+.flow-arrow { color:var(--accent); font-size:1.1rem; flex-shrink:0; line-height:1; }
+@media (max-width: 767px) {
+    .flow-diagram { flex-direction:column; align-items:stretch; }
+    .flow-step { text-align:center; }
+    .flow-arrow { text-align:center; transform:rotate(90deg); }
+}
