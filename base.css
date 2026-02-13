@@ -390,35 +390,6 @@ body {
     font-size: .88rem;
 }
 
-/* === Timer === */
-.timer-display {
-    text-align: center;
-    padding: 30px 0;
-}
-.timer-time {
-    font-size: clamp(2.5rem, 12vw, 5rem);
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    color: var(--accent);
-    letter-spacing: 2px;
-}
-.timer-time.warning { color: var(--yellow); }
-.timer-time.danger { color: var(--red); }
-.timer-controls {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-}
-.timer-presets {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 16px;
-    flex-wrap: wrap;
-}
-
 /* === Section header === */
 .page-header {
     margin-bottom: 20px;
@@ -480,34 +451,6 @@ body {
 .correct { color: var(--green); font-weight: 600; }
 .incorrect { color: var(--red); font-weight: 600; }
 
-/* === Interview process timeline === */
-.timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin: 20px 0;
-}
-.timeline-step {
-    text-align: center;
-    position: relative;
-    padding: 14px 8px;
-}
-.timeline-step::after { display: none; }
-.timeline-dot {
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin: 0 auto 8px;
-}
-.timeline-label {
-    font-size: .8rem;
-    font-weight: 600;
-}
-.timeline-desc {
-    font-size: .72rem;
-    color: var(--text-muted);
-    margin-top: 3px;
-}
 
 /* === Beginner note === */
 .beginner-note {
@@ -550,22 +493,6 @@ body {
     .content { padding: 20px 18px; padding-top: 60px; }
     .card { padding: 18px 20px; }
     .complexity-info { flex-direction: row; gap: 16px; }
-    .timeline { flex-direction: row; flex-wrap: wrap; }
-    .timeline-step {
-        flex: 1;
-        min-width: 120px;
-    }
-    .timeline-step::after {
-        content: '';
-        position: absolute;
-        top: 28px;
-        right: -1px;
-        width: 20px;
-        height: 2px;
-        background: var(--border);
-        display: block;
-    }
-    .timeline-step:last-child::after { display: none; }
 }
 
 /* =============================================
@@ -598,8 +525,6 @@ body {
     .filter-bar select, .filter-bar input { flex: none; width: auto; }
 
     .star-section { padding: 14px 18px; }
-
-    .timer-display { padding: 40px 0; }
 
     .recommendation { padding: 18px 22px; }
     .beginner-note { padding: 14px 18px; }

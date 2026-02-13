@@ -1,5 +1,5 @@
 // ============================================================
-// Finance Prep - Operations Interview Tool
+// Finance Notes - Operations
 // ============================================================
 
 // --- localStorage migration (old gs-ops-* → fin-ops-*) ---
@@ -21,31 +21,12 @@ const i18n = {
     en: {
         dashboard:'Dashboard', financeBasics:'Finance Basics', tradeLifecycle:'Trade Lifecycle', marketKnowledge:'Markets',
         behavioral:'Behavioral', technical:'Technical Q&A', caseStudy:'Case Study',
-        glossary:'Glossary', timer:'Timer', references:'References',
-        referencesDesc:'Useful resources for deeper study. These links cover trade lifecycle, settlement, regulations, and interview preparation.',
-        subtitle:'Operations Division', description:'Operations Interview Preparation for Investment Banking',
-        start:'Start', pause:'Pause', reset:'Reset', minutes:'Minutes', set:'Set',
-        timeUp:'Time is up!',
+        glossary:'Glossary', references:'References',
+        referencesDesc:'Useful resources for deeper study. Covers trade lifecycle, settlement, regulations, and industry knowledge.',
+        subtitle:'Operations', description:'Operations knowledge base and reference guide',
         showAnswer:'Show Answer',
         starMethod:'STAR Method',
         starDesc:'<b>S</b>ituation: Set the context<br><b>T</b>ask: Describe your responsibility<br><b>A</b>ction: Explain what you did (focus here)<br><b>R</b>esult: Share the outcome with metrics if possible',
-        // Timeline
-        tl1:'Video Interview', tl1d:'Video interview (behavioral)',
-        tl2:'Phone Screen', tl2d:'30 min with recruiter',
-        tl3:'Final Round', tl3d:'2-5 interviews (30-60 min each)',
-        tl4:'Offer', tl4d:'Final decision',
-        // Timer tips
-        oaTips:'Interview Mindset',
-        oaTipsList:[
-            'Be honest. If you do not know something, say so, then show how you would figure it out.',
-            'Interviews are 80% behavioral. Prepare STAR stories from university, part-time work, or club activities.',
-            'You do NOT need to be a finance expert. Interviewers care about how you think, not what you already know.',
-            'Show curiosity: "I do not know the details yet, but I have been reading about X and found it interesting."',
-            'Interviewers look for: trainability, logical thinking, and resilience under pressure.',
-            'Prepare 2-3 genuine questions for reverse questions. Keep them simple and honest.',
-        ],
-        disclaimer:'* Interview patterns based on candidate reports. Actual experience may vary.',
-        simulateInterview:'Simulate interview time constraints',
         financeBasicsTitle:'Finance Basics',
         financeBasicsDesc:'Background knowledge to help you understand the role. You do NOT need to memorize this, a big-picture understanding is enough for interviews.',
         tradeLifecycleTitle:'Trade Lifecycle Knowledge',
@@ -60,49 +41,18 @@ const i18n = {
         caseDesc:'Practice real-world Operations problem-solving scenarios',
         glossaryTitle:'Glossary',
         glossaryDesc:'Key financial and Operations terms',
-        reverseQTitle:'Reverse Questions (Questions to Ask)',
-        reverseQDesc:'Keep it simple and genuine. Avoid overly technical or show-off questions, interviewers see through that. Ask what you truly want to know.',
         recentTopicsTitle:'Recent Industry Topics',
         recentTopicsDesc:'Knowing current trends shows you follow the industry',
-        tl1Detail:'Focuses on personality, motivation, and cultural fit',
-        tl2Detail:'Recruiter assesses communication skills and basic knowledge',
-        tl3Detail:'Mix of behavioral, technical, and case-based questions from team members',
-        tl4Detail:'May include negotiation; respond promptly and professionally',
-        interviewerLooksFor:'What Interviewers Are Really Looking For',
-        interviewerLooksForDesc:'New graduate Operations interviews are ~80% behavioral. Deep financial knowledge is NOT expected. Interviewers evaluate these three qualities:',
-        quality1Title:'Trainability',
-        quality1Desc:'Can you listen, learn, and accept feedback? Will you ask questions when stuck rather than pretending to know?',
-        quality2Title:'Smart Thinking',
-        quality2Desc:'Can you break down problems logically? You do not need the right answer, they want to see HOW you think.',
-        quality3Title:'Resilience',
-        quality3Desc:'Can you handle pressure, tight deadlines, and repetitive work without losing accuracy or motivation?',
     },
     ja: {
         dashboard:'ダッシュボード', financeBasics:'金融基礎', tradeLifecycle:'トレードライフサイクル', marketKnowledge:'金融市場',
         behavioral:'行動面接', technical:'テクニカルQ&A', caseStudy:'ケーススタディ',
-        glossary:'用語集', timer:'タイマー', references:'参考リンク',
-        referencesDesc:'より深い学習のための参考資料です。トレードライフサイクル、決済、規制、面接対策をカバーしています。',
-        subtitle:'オペレーション部門', description:'投資銀行オペレーション面接対策',
-        start:'開始', pause:'一時停止', reset:'リセット', minutes:'分', set:'セット',
-        timeUp:'時間切れです！',
+        glossary:'用語集', references:'参考リンク',
+        referencesDesc:'より深い学習のための参考資料です。トレードライフサイクル、決済、規制、業界知識をカバーしています。',
+        subtitle:'オペレーション', description:'オペレーション知識ベース・リファレンスガイド',
         showAnswer:'答えを見る',
         starMethod:'STARメソッド',
         starDesc:'<b>S</b>ituation（状況）: 背景を説明<br><b>T</b>ask（課題）: あなたの責任を述べる<br><b>A</b>ction（行動）: 何をしたか説明（ここが重点）<br><b>R</b>esult（結果）: 成果を数値とともに共有',
-        tl1:'動画面接', tl1d:'動画面接（行動質問中心）',
-        tl2:'電話スクリーニング', tl2d:'リクルーターと30分',
-        tl3:'最終面接', tl3d:'2-5回の面接（各30-60分）',
-        tl4:'オファー', tl4d:'最終決定',
-        oaTips:'面接の心得',
-        oaTipsList:[
-            '正直に。知らないことは「知りません」と言い、「でもこう調べます」と見せる。',
-            '面接の8割は行動面接。大学、アルバイト、サークル活動からSTARストーリーを準備。',
-            '金融の専門家である必要はない。面接官は知識量ではなく「どう考えるか」を見ている。',
-            '好奇心を見せる：「詳しくはまだですが、〜について読んで興味を持っています」',
-            '面接官が評価するのは：素直さ、論理的思考力、プレッシャーへの耐性。',
-            '逆質問は2-3個、素直で正直なものを準備。背伸びした質問は逆効果。',
-        ],
-        disclaimer:'※面接パターンは候補者の報告に基づきます。実際の経験は異なる場合があります。',
-        simulateInterview:'面接の時間制約をシミュレーション',
         financeBasicsTitle:'金融基礎',
         financeBasicsDesc:'役割を理解するための背景知識です。暗記する必要はありません, 面接では大枠がわかっていれば十分です。',
         tradeLifecycleTitle:'トレードライフサイクル知識',
@@ -117,22 +67,8 @@ const i18n = {
         caseDesc:'実際のオペレーション問題解決シナリオを練習',
         glossaryTitle:'用語集',
         glossaryDesc:'重要な金融・オペレーション用語',
-        reverseQTitle:'逆質問（面接官への質問）',
-        reverseQDesc:'シンプルで素直な質問が一番です。専門用語を使って知識をアピールしようとすると逆効果。本当に知りたいことを聞きましょう。',
         recentTopicsTitle:'最近の業界トピック',
         recentTopicsDesc:'最新のトレンドを知っていると業界への関心を示せます',
-        tl1Detail:'人柄、志望動機、カルチャーフィットが中心',
-        tl2Detail:'コミュニケーション能力と基礎知識を確認',
-        tl3Detail:'行動面接、テクニカル、ケース問題がチームメンバーから出題',
-        tl4Detail:'条件交渉の場合も。迅速かつ丁寧に対応',
-        interviewerLooksFor:'面接官が本当に見ていること',
-        interviewerLooksForDesc:'新卒オペレーションの面接は約8割が行動面接です。深い金融知識は求められていません。面接官が評価しているのは以下の3つの資質です：',
-        quality1Title:'素直さ（Trainability）',
-        quality1Desc:'話を聞けるか？ フィードバックを受け入れられるか？ 分からない時に知ったふりをせず質問できるか？',
-        quality2Title:'地頭の良さ（Smart Thinking）',
-        quality2Desc:'問題を論理的に分解できるか？ 正解は求めていません, どう考えるかのプロセスを見ています。',
-        quality3Title:'タフさ（Resilience）',
-        quality3Desc:'プレッシャー、締切、地道な繰り返し作業に対して、正確さとモチベーションを保てるか？',
     }
 };
 function t(k){ return i18n[currentLang][k] || i18n.en[k] || k; }
@@ -629,7 +565,7 @@ function beginnerDefEl(obj) {
 }
 
 function updateNavLabels(){
-    const labels = { dashboard:t('dashboard'), 'finance-basics':t('financeBasics'), 'trade-lifecycle':t('tradeLifecycle'), 'market-knowledge':t('marketKnowledge'), behavioral:t('behavioral'), technical:t('technical'), 'case-study':t('caseStudy'), glossary:t('glossary'), timer:t('timer'), references:t('references') };
+    const labels = { dashboard:t('dashboard'), 'finance-basics':t('financeBasics'), 'trade-lifecycle':t('tradeLifecycle'), 'market-knowledge':t('marketKnowledge'), behavioral:t('behavioral'), technical:t('technical'), 'case-study':t('caseStudy'), glossary:t('glossary'), references:t('references') };
     navLinks.forEach(l => { const icon = l.querySelector('.nav-icon'); l.innerHTML = (icon ? icon.outerHTML : '') + ' ' + (labels[l.dataset.section] || ''); });
     langBtn.textContent = currentLang === 'ja' ? 'EN / JA  (JA)' : 'EN / JA  (EN)';
 }
@@ -646,7 +582,7 @@ function navigateTo(section, params){
     currentSection = section;
     navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === section));
     closeSidebar();
-    const r = { dashboard:renderDashboard, 'finance-basics':renderFinanceBasics, 'trade-lifecycle':renderTradeLifecycle, 'market-knowledge':renderMarketKnowledge, behavioral:renderBehavioral, technical:renderTechnical, 'case-study':renderCaseStudy, glossary:renderGlossary, timer:renderTimer, references:renderReferences };
+    const r = { dashboard:renderDashboard, 'finance-basics':renderFinanceBasics, 'trade-lifecycle':renderTradeLifecycle, 'market-knowledge':renderMarketKnowledge, behavioral:renderBehavioral, technical:renderTechnical, 'case-study':renderCaseStudy, glossary:renderGlossary, references:renderReferences };
     (r[section] || renderDashboard)(params);
     window.scrollTo(0, 0);
 }
@@ -656,28 +592,6 @@ function navigateTo(section, params){
 function renderDashboard(){
     content.innerHTML = '';
     content.appendChild(h('div', {className:'page-header'}, h('h2', null, t('dashboard')), h('p', null, t('description'))));
-
-    // Timeline
-    const tl = h('div', {className:'timeline'},
-        ...[{l:t('tl1'),d:t('tl1d'),detail:t('tl1Detail')},{l:t('tl2'),d:t('tl2d'),detail:t('tl2Detail')},{l:t('tl3'),d:t('tl3d'),detail:t('tl3Detail')},{l:t('tl4'),d:t('tl4d'),detail:t('tl4Detail')}]
-        .map(s => h('div', {className:'timeline-step'}, h('div', {className:'timeline-dot'}), h('div', {className:'timeline-label'}, s.l), h('div', {className:'timeline-desc'}, s.d), h('div', {style:'font-size:.75rem;color:var(--text-muted);margin-top:2px'}, s.detail)))
-    );
-    content.appendChild(tl);
-    content.appendChild(h('p', {style:'font-size:.7rem;color:var(--text-muted);text-align:center;margin-bottom:20px'}, t('disclaimer')));
-
-    // What interviewers look for
-    const qualities = [
-        {title:t('quality1Title'), desc:t('quality1Desc')},
-        {title:t('quality2Title'), desc:t('quality2Desc')},
-        {title:t('quality3Title'), desc:t('quality3Desc')},
-    ];
-    const lookForCard = h('div', {className:'card', style:'margin-bottom:24px;border-left:3px solid var(--accent)'},
-        h('h3', {className:'card-title', style:'margin-bottom:6px'}, t('interviewerLooksFor')),
-        h('p', {style:'color:var(--text-muted);font-size:.85rem;margin-bottom:14px;line-height:1.6'}, t('interviewerLooksForDesc')),
-        ...qualities.map(q => h('div', {style:'margin-bottom:10px'},
-            h('div', {style:'font-weight:700;color:var(--accent);font-size:.95rem'}, q.title),
-            h('div', {style:'color:var(--text-muted);font-size:.85rem;line-height:1.5;margin-top:2px'}, q.desc))));
-    content.appendChild(lookForCard);
 
     // Section navigation cards
     const sections = [
@@ -695,6 +609,20 @@ function renderDashboard(){
                 h('div', {className:'card-header'}, h('h3', {className:'card-title'}, sec.name), h('span', {className:'count'}, sec.items.length + (currentLang==='ja'?'項目':' items')))))
     );
     content.appendChild(grid);
+
+    // Industry Topics
+    const topicsCard = h('div', {className:'card', style:'margin-top:24px'},
+        h('h3', {className:'card-title', style:'margin-bottom:6px'}, t('recentTopicsTitle')),
+        h('p', {style:'color:var(--text-muted);font-size:.85rem;margin-bottom:14px'}, t('recentTopicsDesc')));
+    industryTopics.forEach(rt => {
+        const title = L(rt, 'topic');
+        const desc = L(rt, 'desc');
+        const linkEl = rt.url ? h('a', {href:rt.url, target:'_blank', rel:'noopener noreferrer', style:'font-size:.8rem;color:var(--accent);text-decoration:none;margin-left:8px'}, '\u2197') : null;
+        topicsCard.appendChild(h('div', {style:'margin-bottom:12px'},
+            h('h4', {style:'color:var(--accent);font-size:.95rem;margin-bottom:4px'}, title, linkEl),
+            h('p', {style:'color:var(--text-muted);font-size:.85rem;line-height:1.6'}, desc)));
+    });
+    content.appendChild(topicsCard);
 }
 
 // --- Finance Basics ---
@@ -847,92 +775,29 @@ function renderGlossary(){
     });
 }
 
-// --- Timer ---
-let timerInterval = null, timerSeconds = 0, timerRunning = false, timerTotal = 0;
-function renderTimer(){
-    content.innerHTML = '';
-    content.appendChild(h('div', {className:'page-header'}, h('h2', null, t('timer')), h('p', null, t('simulateInterview'))));
-    const display = h('div', {className:'timer-display'});
-    display.appendChild(h('div', {className:'timer-time', id:'timer-display'}, formatTime(timerSeconds)));
-    const controls = h('div', {className:'timer-controls'});
-    controls.appendChild(h('button', {className:'btn btn-primary', onClick:() => { if (!timerRunning && timerSeconds > 0){ timerRunning = true; timerTotal = timerSeconds; timerInterval = setInterval(() => { timerSeconds--; updateTimerDisplay(); if (timerSeconds <= 0){ clearInterval(timerInterval); timerRunning = false; timerSeconds = 0; updateTimerDisplay(); alert(t('timeUp')); } }, 1000); updateTimerDisplay(); } }}, t('start')));
-    controls.appendChild(h('button', {className:'btn btn-secondary', onClick:() => { if (timerRunning){ clearInterval(timerInterval); timerRunning = false; updateTimerDisplay(); } }}, t('pause')));
-    controls.appendChild(h('button', {className:'btn btn-danger', onClick:() => { clearInterval(timerInterval); timerRunning = false; timerSeconds = 0; timerTotal = 0; updateTimerDisplay(); }}, t('reset')));
-    display.appendChild(controls);
-    display.appendChild(h('div', {className:'timer-presets'},
-        ...[{l:'30 min',s:1800},{l:'45 min',s:2700},{l:'60 min',s:3600}].map(p =>
-            h('button', {className:'btn btn-secondary btn-sm', onClick:() => { if (!timerRunning){ timerSeconds = p.s; timerTotal = p.s; updateTimerDisplay(); } }}, p.l))));
-    content.appendChild(display);
-    const tips = t('oaTipsList');
-    content.appendChild(h('div', {className:'card', style:'margin-top:24px'},
-        h('h3', {className:'card-title', style:'margin-bottom:10px'}, t('oaTips')),
-        h('ul', {style:'padding-left:20px;color:var(--text-muted);line-height:1.8'}, ...tips.map(tip => h('li', null, tip)))));
-
-    // Reverse Questions
-    const rqTitle = t('reverseQTitle');
-    const rqDesc = t('reverseQDesc');
-    const rqCategories = currentLang === 'ja' ? [
-        {cat:'仕事内容について（素直に聞く）', qs:[
-            '1日の仕事の流れを教えていただけますか？',
-            '新卒で入社した場合、最初はどんな業務から始めることが多いですか？',
-            'チームの雰囲気や働き方について教えてください',
-        ]},
-        {cat:'成長について（学ぶ姿勢を見せる）', qs:[
-            '入社前に勉強しておくと役立つことはありますか？',
-            '新入社員の研修制度について教えていただけますか？',
-            'この仕事で一番やりがいを感じるのはどんな時ですか？',
-        ]},
-    ] : [
-        {cat:'About the Work (ask naturally)', qs:[
-            'What does a typical day look like in this role?',
-            'What kind of tasks would a new graduate start with?',
-            'Can you tell me about the team culture and working style?',
-        ]},
-        {cat:'Growth (show eagerness to learn)', qs:[
-            'Is there anything you would recommend studying before joining?',
-            'Can you tell me about the training program for new joiners?',
-            'What do you find most rewarding about this work?',
-        ]},
-    ];
-    const rqCard = h('div', {className:'card', style:'margin-top:24px'},
-        h('h3', {className:'card-title', style:'margin-bottom:6px'}, rqTitle),
-        h('p', {style:'color:var(--text-muted);font-size:.85rem;margin-bottom:14px'}, rqDesc));
-    rqCategories.forEach(cat => {
-        rqCard.appendChild(h('h4', {style:'color:var(--accent);margin:12px 0 6px;font-size:.95rem'}, cat.cat));
-        rqCard.appendChild(h('ul', {style:'padding-left:20px;color:var(--text-muted);line-height:1.8;margin-bottom:8px'}, ...cat.qs.map(q => h('li', null, q))));
-    });
-    content.appendChild(rqCard);
-
-    // Recent Industry Topics
-    const rtTitle = t('recentTopicsTitle');
-    const rtDesc = t('recentTopicsDesc');
-    const recentTopics = currentLang === 'ja' ? [
-        {topic:'T+1決済（米国）', desc:'2024年5月に米国株式がT+2からT+1に移行。オペレーションの処理時間が半減し、自動化の重要性が増大。面接で触れると「業界動向を追っている」印象を与えられる。'},
-        {topic:'AI・自動化とオペレーション', desc:'RPAやAIによる照合自動化、異常検知、自然言語処理によるコンファメーション読み取りなどが進展。「テクノロジーでOpsをどう変えるか」は頻出テーマ。'},
-        {topic:'オペレーショナルレジリエンス', desc:'コロナ禍以降、業務継続性（BCP）とサイバーセキュリティへの注目が高まった。規制当局も金融機関にレジリエンス計画を義務化する流れ。'},
-        {topic:'ESG・サステナブルファイナンス', desc:'環境・社会・ガバナンスに配慮した投資が拡大。Opsはグリーンボンドの発行処理やESGデータ管理で関わる。新しい分野として知っておくと良い。'},
-        {topic:'デジタルアセットと分散台帳', desc:'暗号資産やトークン化証券など新しい資産クラスが登場。決済の即時化（T+0）の可能性や、ブロックチェーンを使った取引処理が議論されている。'},
-    ] : [
-        {topic:'T+1 Settlement (US)', desc:'US equities moved from T+2 to T+1 in May 2024. Processing time halved, making automation critical. Mentioning this in interviews shows you follow industry developments.'},
-        {topic:'AI & Automation in Operations', desc:'RPA, AI-powered reconciliation, anomaly detection, NLP for confirmation matching. "How would you use technology to improve Ops?" is a common interview theme.'},
-        {topic:'Operational Resilience', desc:'Post-COVID, business continuity and cybersecurity became top priorities. Regulators now require financial institutions to have detailed resilience plans.'},
-        {topic:'ESG & Sustainable Finance', desc:'Environmentally and socially responsible investing is growing fast. Ops handles green bond processing and ESG data management. Good to be aware of this emerging area.'},
-        {topic:'Digital Assets & DLT', desc:'Crypto assets and tokenized securities are emerging asset classes. Blockchain-based settlement (T+0) is being explored. Shows awareness of the future of Operations.'},
-    ];
-    const rtCard = h('div', {className:'card', style:'margin-top:24px'},
-        h('h3', {className:'card-title', style:'margin-bottom:6px'}, rtTitle),
-        h('p', {style:'color:var(--text-muted);font-size:.85rem;margin-bottom:14px'}, rtDesc));
-    recentTopics.forEach(rt => {
-        rtCard.appendChild(h('div', {style:'margin-bottom:12px'},
-            h('h4', {style:'color:var(--accent);font-size:.95rem;margin-bottom:4px'}, rt.topic),
-            h('p', {style:'color:var(--text-muted);font-size:.85rem;line-height:1.6'}, rt.desc)));
-    });
-    content.appendChild(rtCard);
-
-    updateTimerDisplay();
-}
-function formatTime(s){ const m = Math.floor(s / 60); const sec = s % 60; return String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0'); }
-function updateTimerDisplay(){ const el = document.getElementById('timer-display'); if (!el) return; el.textContent = formatTime(timerSeconds); el.className = 'timer-time'; if (timerTotal > 0){ const r = timerSeconds / timerTotal; if (r <= 0.1) el.classList.add('danger'); else if (r <= 0.25) el.classList.add('warning'); } }
+// --- Industry Topics (shown on dashboard) ---
+const industryTopics = [
+    {topic:'T+1 Settlement (US)', topicJa:'T+1決済（米国）',
+     desc:'US equities moved from T+2 to T+1 in May 2024. Processing time halved, making automation critical.',
+     descJa:'2024年5月に米国株式がT+2からT+1に移行。オペレーションの処理時間が半減し、自動化の重要性が増大。',
+     url:'https://www.sec.gov/divisions/marketreg/t1-settlement-faq'},
+    {topic:'AI & Automation in Operations', topicJa:'AI・自動化とオペレーション',
+     desc:'RPA, AI-powered reconciliation, anomaly detection, NLP for confirmation matching are transforming Operations.',
+     descJa:'RPAやAIによる照合自動化、異常検知、自然言語処理によるコンファメーション読み取りなどが進展。',
+     url:'https://www.mckinsey.com/industries/financial-services/our-insights/the-future-of-bank-operations'},
+    {topic:'Operational Resilience', topicJa:'オペレーショナルレジリエンス',
+     desc:'Post-COVID, business continuity and cybersecurity became top priorities. Regulators now require detailed resilience plans.',
+     descJa:'コロナ禍以降、業務継続性（BCP）とサイバーセキュリティへの注目が高まった。規制当局も金融機関にレジリエンス計画を義務化。',
+     url:'https://www.bis.org/bcbs/publ/d516.htm'},
+    {topic:'ESG & Sustainable Finance', topicJa:'ESG・サステナブルファイナンス',
+     desc:'Environmentally and socially responsible investing is growing. Ops handles green bond processing and ESG data management.',
+     descJa:'環境・社会・ガバナンスに配慮した投資が拡大。Opsはグリーンボンドの発行処理やESGデータ管理で関わる。',
+     url:'https://www.investopedia.com/terms/e/environmental-social-and-governance-esg-criteria.asp'},
+    {topic:'Digital Assets & DLT', topicJa:'デジタルアセットと分散台帳',
+     desc:'Crypto assets and tokenized securities are emerging. Blockchain-based settlement (T+0) is being explored.',
+     descJa:'暗号資産やトークン化証券など新しい資産クラスが登場。ブロックチェーンを使った即時決済（T+0）が議論されている。',
+     url:'https://www.dtcc.com/dtcc-connection/articles/2023/october/19/digital-assets'},
+];
 
 // --- References ---
 const referenceSources = [
@@ -948,7 +813,7 @@ const referenceSources = [
         { title: 'ISDA: Margin Rules & Documentation', url: 'https://www.isda.org/category/margin/', desc: 'OTC derivatives margin requirements and UMR.', descJa: 'OTCデリバティブの証拠金要件とUMR。' },
         { title: 'ESMA: CSDR Overview', url: 'https://www.esma.europa.eu/policy-rules/post-trading/settlement', desc: 'EU settlement discipline and CSDR regulations.', descJa: 'EUの決済規律とCSDR規制。' },
     ]},
-    { category: 'Interview Preparation', categoryJa: '面接対策',
+    { category: 'Career Resources', categoryJa: 'キャリアリソース',
       links: [
         { title: 'Wall Street Oasis: Operations Interview', url: 'https://www.wallstreetoasis.com/resources/interviews/operations-interview-questions', desc: 'Community-contributed operations interview questions and answers.', descJa: 'コミュニティ投稿のオペレーション面接質問と回答。' },
         { title: 'Investopedia: Financial Terms Dictionary', url: 'https://www.investopedia.com/financial-term-dictionary-4769738', desc: 'Comprehensive glossary of financial terms.', descJa: '金融用語の包括的な辞書。' },
